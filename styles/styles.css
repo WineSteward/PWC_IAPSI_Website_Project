@@ -1,5 +1,7 @@
 @media (min-width:0px) and (max-width: 575.98px) {
 
+  
+  
   #img_collapse_adoption {
     display: none;
   }
@@ -44,7 +46,7 @@
 
 .navbar-nav a:hover, footer a:hover{
   color: #00ADB5 !important;
-  background-color: #EEEEEE;
+  /*background-color: #EEEEEE;*/
 }
 
 
