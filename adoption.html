@@ -80,76 +80,77 @@
               indique por favor o nome do animal.</label>
             <input type="text" class="form-control" id="form_control_animal_preference">
           </div>
-
-          <label class="" for="form_control_sex">Caso não procure adoptar um animal específico, indique se tem
+          <!--SEPARADOR PARA POR A FUNCEMINAR O FOR DOS RADIO'S E CHECKBOX'S-->
+          <label class="" name="form_control_sex">Caso não procure adoptar um animal específico, indique se tem
             preferência pelo sexo do animal.</label>
           <div class="m-2">
             <div class="form-check ">
               <input class="form-check-input" type="radio" value="Masculino" name="radio_sex" id="radio_sex_masculino">
-              <label class="form-check-label" for="form_control_sex">Masculino</label>
+              <label class="form-check-label" for="radio_sex_masculino">Masculino</label>
             </div>
             <div class="form-check">
               <input class="form-check-input" type="radio" value="Feminino" name="radio_sex" id="radio_sex_feminino">
-              <label class="form-check-label" for="form_control_sex">Feminino</label>
+              <label class="form-check-label" for="radio_sex_feminino">Feminino</label>
             </div>
             <div class="form-check">
               <input class="form-check-input" type="radio" value="Outro" name="radio_sex" id="radio_sex_indefinido">
-              <label class="form-check-label" for="form_control_sex">Indefinido</label>
+              <label class="form-check-label" for="radio_sex_indefinido">Indefinido</label>
             </div>
           </div>
 
-          <label class="" for="form_control_objective_adption">Qual o objetivo da adopção?</label>
+          <label class="" name="form_control_objective_adption">Qual o objetivo da adopção?</label>
           <div class="m-2">
             <div class="form-check">
-              <input class="form-check-input" type="checkbox" value="companhia_outro" id="flexCheckDefault">
-              <label class="form-check-label" for="form_control_objective_adption">Companhia para outro cão</label>
+              <input class="form-check-input" type="checkbox" value="companhia_outro" id="checkbox_companhia_outro">
+              <label class="form-check-label" for="checkbox_companhia_outro">Companhia para outro cão</label>
             </div>
             <div class="form-check">
-              <input class="form-check-input" type="checkbox" value="companhia" id="flexCheckChecked">
-              <label class="form-check-label" for="form_control_objective_adption">Companhia</label>
+              <input class="form-check-input" type="checkbox" value="companhia" id="checkbox_companhia">
+              <label class="form-check-label" for="checkbox_companhia">Companhia</label>
             </div>
             <div class="form-check">
-              <input class="form-check-input" type="checkbox" value="criacao" id="flexCheckChecked">
-              <label class="form-check-label" for="form_control_objective_adption">Criação</label>
+              <input class="form-check-input" type="checkbox" value="criacao" id="checkbox_criacao">
+              <label class="form-check-label" for="checkbox_criacao">Criação</label>
             </div>
           </div>
 
-          <label class="" for="form_control_house">Tipo de Habitação?</label>
+          <label class="" name="form_control_house">Tipo de Habitação?</label>
           <div class="m-2">
             <div class="form-check">
               <input class="form-check-input" type="radio" value="Apartment" name="radio_house"
                 id="radio_house_apartment">
-              <label class="form-check-label" for="radio_house">Apartamento</label>
+              <label class="form-check-label" for="radio_house_apartment">Apartamento</label>
             </div>
             <div class="form-check ">
               <input class="form-check-input" type="radio" value="Complex" name="radio_house" id="radio_house_complex">
-              <label class="form-check-label" for="radio_house">Casa com quintal/acesso ao exterior</label>
+              <label class="form-check-label" for="radio_house_complex">Casa com quintal/acesso ao exterior</label>
             </div>
           </div>
 
-          <label class="" for="form_control_outdoor">Se tem jardim, este está completamente vedado?</label>
+          <label class="" name="form_control_outdoor">Se tem jardim, este está completamente vedado?</label>
           <div class="m-2">
             <div class="form-check">
-              <input class="form-check-input" type="radio" value="Yes" name="radio_house" id="form_control_outdoor_yes">
-              <label class="form-check-label" for="form_control_outdoor">Sim</label>
+              <input class="form-check-input" type="radio" value="Yes" name="radio_garden"
+                id="form_control_outdoor_yes">
+              <label class="form-check-label" for="form_control_outdoor_yes">Sim</label>
             </div>
             <div class="form-check ">
-              <input class="form-check-input" type="radio" value="No" name="radio_house" id="form_control_outdoor_no">
-              <label class="form-check-label" for="form_control_outdoor">Não</label>
+              <input class="form-check-input" type="radio" value="No" name="radio_garden" id="form_control_outdoor_no">
+              <label class="form-check-label" for="form_control_outdoor_no">Não</label>
             </div>
           </div>
 
-          <label class="" for="form_control_owner_house">A habitação é</label>
+          <label class="" name="form_control_owner_house">A habitação é</label>
           <div class="m-2">
             <div class="form-check">
               <input class="form-check-input" type="radio" value="Self" name="radio_house_ownership"
                 id="form_control_owner_house_self">
-              <label class="form-check-label" for="form_control_owner_house">Própria</label>
+              <label class="form-check-label" for="form_control_owner_house_self">Própria</label>
             </div>
             <div class="form-check ">
               <input class="form-check-input" type="radio" value="Rented" name="radio_house_ownership"
                 id="form_control_owner_house_rented">
-              <label class="form-check-label" for="form_control_owner_house">Arrendada</label>
+              <label class="form-check-label" for="form_control_owner_house_rented">Arrendada</label>
             </div>
           </div>
 
@@ -212,18 +213,15 @@
           <label class="pt-4" for="form_control_like_child">Goste de crianças:</label>
           <div class="m-2">
             <div class="form-check">
-              <input class="form-check-input" type="radio" value="Very_Important" name="radio_like_child"
-                id="form_control_like_child_very_important">
+              <input class="form-check-input" type="radio" value="Very_Important" name="radio_like_child" id="form_control_like_child_very_important">
               <label class="form-check-label" for="form_control_like_child">Muito importante</label>
             </div>
             <div class="form-check ">
-              <input class="form-check-input" type="radio" value="Imporatant" name="radio_like_child"
-                id="form_control_like_child_important">
+              <input class="form-check-input" type="radio" value="Imporatant" name="radio_like_child" id="form_control_like_child_important">
               <label class="form-check-label" for="form_control_like_child">Importante</label>
             </div>
             <div class="form-check ">
-              <input class="form-check-input" type="radio" value="Not_Important" name="radio_like_child"
-                id="form_control_like_child_not_important">
+              <input class="form-check-input" type="radio" value="Not_Important" name="radio_like_child" id="form_control_like_child_not_important">
               <label class="form-check-label" for="form_control_like_child">Pouco importante</label>
             </div>
           </div>
@@ -231,17 +229,17 @@
           <label class="pt-4" for="form_control_sociable">Sociável com outros animais:</label>
           <div class="m-2">
             <div class="form-check">
-              <input class="form-check-input" type="radio" value="Very_Important" name="radio_like_child"
+              <input class="form-check-input" type="radio" value="Very_Important" name="form_control_sociable"
                 id="form_control_sociable_very_important">
               <label class="form-check-label" for="form_control_sociable">Muito importante</label>
             </div>
             <div class="form-check ">
-              <input class="form-check-input" type="radio" value="Imporatant" name="radio_like_child"
+              <input class="form-check-input" type="radio" value="Imporatant" name="form_control_sociable"
                 id="form_control_sociable_important">
               <label class="form-check-label" for="form_control_sociable">Importante</label>
             </div>
             <div class="form-check ">
-              <input class="form-check-input" type="radio" value="Not_Important" name="radio_like_child"
+              <input class="form-check-input" type="radio" value="Not_Important" name="form_control_sociable"
                 id="form_control_sociable_not_important">
               <label class="form-check-label" for="form_control_sociable">Pouco importante</label>
             </div>
@@ -250,17 +248,17 @@
           <label class="pt-4" for="form_control_stranger">Não se importe com estranhos:</label>
           <div class="m-2">
             <div class="form-check">
-              <input class="form-check-input" type="radio" value="Very_Important" name="radio_like_child"
+              <input class="form-check-input" type="radio" value="Very_Important" name="form_control_stranger"
                 id="form_control_stranger_very_important">
               <label class="form-check-label" for="form_control_stranger">Muito importante</label>
             </div>
             <div class="form-check ">
-              <input class="form-check-input" type="radio" value="Imporatant" name="radio_like_child"
+              <input class="form-check-input" type="radio" value="Imporatant" name="form_control_stranger"
                 id="form_control_stranger_important">
               <label class="form-check-label" for="form_control_stranger">Importante</label>
             </div>
             <div class="form-check ">
-              <input class="form-check-input" type="radio" value="Not_Important" name="radio_like_child"
+              <input class="form-check-input" type="radio" value="Not_Important" name="form_control_stranger"
                 id="form_control_stranger_not_important">
               <label class="form-check-label" for="form_control_stranger">Pouco importante</label>
             </div>
@@ -269,17 +267,17 @@
           <label class="pt-4" for="form_control_animal_condition">Esteja esterilizado/castrado:</label>
           <div class="m-2">
             <div class="form-check">
-              <input class="form-check-input" type="radio" value="Very_Important" name="radio_like_child"
+              <input class="form-check-input" type="radio" value="Very_Important" name="form_control_animal_condition"
                 id="form_control_animal_condition_very_important">
               <label class="form-check-label" for="form_control_animal_condition">Muito importante</label>
             </div>
             <div class="form-check ">
-              <input class="form-check-input" type="radio" value="Imporatant" name="radio_like_child"
+              <input class="form-check-input" type="radio" value="Imporatant" name="form_control_animal_condition"
                 id="form_control_animal_condition_important">
               <label class="form-check-label" for="form_control_animal_condition">Importante</label>
             </div>
             <div class="form-check ">
-              <input class="form-check-input" type="radio" value="Not_Important" name="radio_like_child"
+              <input class="form-check-input" type="radio" value="Not_Important" name="form_control_animal_condition"
                 id="form_control_animal_condition_not_important">
               <label class="form-check-label" for="form_control_animal_condition">Pouco importante</label>
             </div>
@@ -288,17 +286,17 @@
           <label class="pt-4" for="form_control_grabbed">Goste de ser pegado ao colo:</label>
           <div class="m-2">
             <div class="form-check">
-              <input class="form-check-input" type="radio" value="Very_Important" name="radio_like_child"
+              <input class="form-check-input" type="radio" value="Very_Important" name="form_control_grabbed"
                 id="form_control_grabbed_very_important">
               <label class="form-check-label" for="form_control_grabbed">Muito importante</label>
             </div>
             <div class="form-check ">
-              <input class="form-check-input" type="radio" value="Imporatant" name="radio_like_child"
+              <input class="form-check-input" type="radio" value="Imporatant" name="form_control_grabbed"
                 id="form_control_grabbed_important">
               <label class="form-check-label" for="form_control_grabbed">Importante</label>
             </div>
             <div class="form-check ">
-              <input class="form-check-input" type="radio" value="Not_Important" name="radio_like_child"
+              <input class="form-check-input" type="radio" value="Not_Important" name="form_control_grabbed"
                 id="form_control_grabbed_not_important">
               <label class="form-check-label" for="form_control_grabbed">Pouco importante</label>
             </div>
@@ -307,17 +305,17 @@
           <label class="pt-4" for="form_control_calm">Que seja calmo:</label>
           <div class="m-2">
             <div class="form-check">
-              <input class="form-check-input" type="radio" value="Very_Important" name="radio_like_child"
+              <input class="form-check-input" type="radio" value="Very_Important" name="form_control_calm"
                 id="form_control_calm_very_important">
               <label class="form-check-label" for="form_control_calm">Muito importante</label>
             </div>
             <div class="form-check ">
-              <input class="form-check-input" type="radio" value="Imporatant" name="radio_like_child"
+              <input class="form-check-input" type="radio" value="Imporatant" name="form_control_calm"
                 id="form_control_calm_important">
               <label class="form-check-label" for="form_control_calm">Importante</label>
             </div>
             <div class="form-check ">
-              <input class="form-check-input" type="radio" value="Not_Important" name="radio_like_child"
+              <input class="form-check-input" type="radio" value="Not_Important" name="form_control_calm"
                 id="form_control_calm_not_important">
               <label class="form-check-label" for="form_control_calm">Pouco importante</label>
             </div>
@@ -326,17 +324,17 @@
           <label class="pt-4" for="form_control_calm_alone">Que se comporte bem quando fica sozinho:</label>
           <div class="m-2">
             <div class="form-check">
-              <input class="form-check-input" type="radio" value="Very_Important" name="radio_like_child"
+              <input class="form-check-input" type="radio" value="Very_Important" name="form_control_calm_alone"
                 id="form_control_calm_alone_very_important">
               <label class="form-check-label" for="form_control_calm_alone">Muito importante</label>
             </div>
             <div class="form-check ">
-              <input class="form-check-input" type="radio" value="Imporatant" name="radio_like_child"
+              <input class="form-check-input" type="radio" value="Imporatant" name="form_control_calm_alone"
                 id="form_control_calm_alone_important">
               <label class="form-check-label" for="form_control_calm_alone">Importante</label>
             </div>
             <div class="form-check ">
-              <input class="form-check-input" type="radio" value="Not_Important" name="radio_like_child"
+              <input class="form-check-input" type="radio" value="Not_Important" name="form_control_calm_alone"
                 id="form_control_calm_alone_not_important">
               <label class="form-check-label" for="form_control_calm_alone">Pouco importante</label>
             </div>
@@ -366,12 +364,12 @@
           <label class="pt-4" for="form_control_first_animal">Será o seu primeiro animal?</label>
           <div class="m-2">
             <div class="form-check">
-              <input class="form-check-input" type="radio" value="Yes" name="radio_like_child"
+              <input class="form-check-input" type="radio" value="Yes" name="form_control_first_animal"
                 id="form_control_first_animal_yes">
               <label class="form-check-label" for="form_control_first_animal">Sim</label>
             </div>
             <div class="form-check">
-              <input class="form-check-input" type="radio" value="No" name="radio_like_child"
+              <input class="form-check-input" type="radio" value="No" name="form_control_first_animal"
                 id="form_control_first_animal_no">
               <label class="form-check-label" for="form_control_first_animal">Não</label>
             </div>
@@ -405,12 +403,12 @@
           <label class="pt-4" for="form_control_animal_locked">O animal ficará preso em alguma situação?</label>
           <div class="m-2">
             <div class="form-check">
-              <input class="form-check-input" type="radio" value="Yes" name="radio_like_child"
+              <input class="form-check-input" type="radio" value="Yes" name="form_control_animal_locked"
                 id="form_control_animal_locked_yes">
               <label class="form-check-label" for="form_control_animal_locked">Sim</label>
             </div>
             <div class="form-check">
-              <input class="form-check-input" type="radio" value="No" name="radio_like_child"
+              <input class="form-check-input" type="radio" value="No" name="form_control_animal_locked"
                 id="form_control_animal_locked_no">
               <label class="form-check-label" for="form_control_animal_locked">Não</label>
             </div>
@@ -426,12 +424,12 @@
             veterinário?</label>
           <div class="m-2">
             <div class="form-check">
-              <input class="form-check-input" type="radio" value="Yes" name="radio_like_child"
+              <input class="form-check-input" type="radio" value="Yes" name="form_control_vet_required"
                 id="form_control_vet_required_yes">
               <label class="form-check-label" for="form_control_vet_required">Sim</label>
             </div>
             <div class="form-check">
-              <input class="form-check-input" type="radio" value="No" name="radio_like_child"
+              <input class="form-check-input" type="radio" value="No" name="form_control_vet_required"
                 id="form_control_vet_required_no">
               <label class="form-check-label" for="form_control_vet_required">Não</label>
             </div>
@@ -508,12 +506,12 @@
             adoptar o animal?</label>
           <div class="m-2">
             <div class="form-check">
-              <input class="form-check-input" type="radio" value="Yes" name="radio_like_child"
+              <input class="form-check-input" type="radio" value="Yes" name="form_control_help"
                 id="form_control_help_yes">
               <label class="form-check-label" for="form_control_help">Sim</label>
             </div>
             <div class="form-check">
-              <input class="form-check-input" type="radio" value="No" name="radio_like_child" id="form_control_help_no">
+              <input class="form-check-input" type="radio" value="No" name="form_control_help" id="form_control_help_no">
               <label class="form-check-label" for="form_control_help">Não</label>
             </div>
           </div>
@@ -548,7 +546,8 @@
       </div>
 
       <div class="col text-center" id="img_collapse_adoption" style="height: 100%;">
-          <img src="images/dog_1.jpg" alt="cao de chapeuzinho a rir" class="rounded img-fluid" style="max-height: 100%; max-width: 100%;">
+        <img src="images/dog_1.jpg" alt="cao de chapeuzinho a rir" class="rounded img-fluid"
+          style="max-height: 100%; max-width: 100%;">
       </div>
 
     </div>
