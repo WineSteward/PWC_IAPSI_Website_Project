@@ -8,7 +8,7 @@
     <title>Favoritos</title>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <nav class="navbar navbar-expand-sm bg-body-tertiary">
         <div class="container-fluid">
           <a class="navbar-brand" href="index.html">Adotar</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -16,10 +16,10 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-              <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+              <a class="nav-link" href="index.html">Home</a>
               <a class="nav-link" href="about.html">Sobre Nós</a>
               <a class="nav-link" href="store.html">Loja</a>
-              <a class="nav-link" href="favorites.html">Favoritos</a>
+              <a class="nav-link" aria-current="page" href="favorites.html">Favoritos</a>
               <a class="nav-link" href="contacts.html">Contactos</a>
               <a class="nav-link" href="adoption.html">Adotar</a>
             </div>
@@ -28,13 +28,76 @@
     </nav>
 
 
+    <div class="row">
+      <h2 class="mt-5 mb-5 text-center" style="font-size: 2.5rem; font-weight: bold; color: #00ADB5;">Favoritos</h2>
+    </div>
+
+
+    
+    <div class="row" style="max-width: 1410px; margin-left: auto; margin-right: auto;">
+      <table class="table-responsive">
+        <thead>
+          <tr>
+            <th scope="col">Nome</th>
+            <th scope="col">Idade</th>
+            <th scope="col">Raça</th>
+            <th scope="col">Número</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody class="table-group-divider">
+          <tr>
+            <th scope="row">Patinhas</th>
+            <td>10 anos</td>
+            <td>Akita Americano</td>
+            <td>123123</td>
+            <td><button type="button" class="btn btn-danger">Remover</button></td>
+          </tr>
+          <tr>
+            <th scope="row">Malhado</th>
+            <td>3 anos</td>
+            <td>Boxer</td>
+            <td>141414</td>
+            <td><button type="button" class="btn btn-danger">Remover</button></td>
+          </tr>
+          <tr>
+            <th scope="row">Dentuça</th>
+            <td>7 anos</td>
+            <td>Doberman</td>
+            <td>717171</td>
+            <td><button type="button" class="btn btn-danger">Remover</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     <div class="container-fluid" id="footer_container">
       <footer class="py-3 my-4">
         <ul class="nav justify-content-center border-bottom pb-3 mb-3">
           <li class="nav-item"><a href="index.html" class="nav-link px-2 text-body-secondary">Home</a></li>
+          <li class="nav-item"><a href="about.html" class="nav-link px-2 text-body-secondary">Sobre Nós</a></li>
           <li class="nav-item"><a href="store.html" class="nav-link px-2 text-body-secondary">Loja</a></li>
-          <li class="nav-item"><a href="favorites.html" class="nav-link px-2 text-body-secondary">Favoritos</a></li>
           <li class="nav-item"><a href="contacts.html" class="nav-link px-2 text-body-secondary">Contactos</a></li>
           <li class="nav-item"><a href="adoption.html" class="nav-link px-2 text-body-secondary">Adotar</a></li>
         </ul>
