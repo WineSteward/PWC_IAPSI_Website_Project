@@ -1,22 +1,40 @@
 var current_page = 1;
 var token;
+var clone_card_cao;
 
-document.addEventListener('DOMContentLoaded', function () {
-    var clone_card_cao = $(".card-cao").clone(); //clonar o card
-    $(".lista-caes").html(""); //limpar o clone com info default
+if(location.pathname.split("/").pop() == "about_dog.html" && localStorage.getItem("id") !== null){
+    console.log("Página dos detalhes");
+   detalhesCao();
+}
+
+function detalhesCao(){
+    var id=localStorage.getItem("id");
+    console.log(id);
+
+    $.ajax({
+        
+        method: 'GET',
+        url:  `https://api.petfinder.com/v2/animals/${id}`,
+        headers: {"Authorization": "Bearer " + token}
     
+    }).done(function (dados_recebidos) {
+        console.log(dados_recebidos);
+        
 
-    //mudança de pagina
-    $("#proxima_pagina").on("click", function() {
-        current_page++;
-        atualizarCardsComToken(current_page);
     });
+}
+
+document.addEventListener('DOMContentLoaded', function () { 
+    clone_card_cao = $(".card-cao").clone(); //clonar o card
+    $(".lista-caes").html(""); //limpar o clone com info default
+
 
     // Evento para página anterior
     $("#pagina_anterior").on("click", function() {
     if (current_page > 1) {
         current_page--;
         atualizarCardsComToken(current_page);
+
     }
     });
 
@@ -25,6 +43,7 @@ document.addEventListener('DOMContentLoaded', function () {
     .then(function (receivedToken) {
         token = receivedToken; // Atribui o token à variável global
         atualizarCardsComToken(current_page);
+        detalhesCao();
     })
     .catch(error => {
         // Lidar com erros na obtenção do token ou na atualização dos cards
@@ -59,74 +78,85 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
 
-    function atualizarCardsComToken(current_page) {
-        
-        console.log(current_page);
-        
-        // Fazendo uma solicitação AJAX para obter informações sobre animais (cães)
-        $.ajax({
-            
-            method: 'GET',
-            url:  `https://api.petfinder.com/v2/animals?type=dog&page=${current_page}`,
-            headers: {"Authorization": "Bearer " + token}
-        
-        }).done(function (dados_recebidos) {
-
-            console.log('https://api.petfinder.com/v2/animals?type=dog&page=' + current_page);
-            
-            
-            
-            $.each(dados_recebidos.animals, function (indice, result) {
-            
-                //console.log(result); verificar dados recebidos
-    
-                var card = clone_card_cao.clone(); // replicamos um card novo para nao sobrepor informaçoes e perder o original
-    
-                $(".cao-nome", card).text(result.name); //adicionamos a informaçao que obtivemos e substituimos no card novo
-    
-                $(".cao-descricao", card).text(result.description);
-    
-                $(".cao-race", card).text(result.breeds.primary);
-    
-                $(".cao-genero", card).text(result.gender);
-    
-                if (result.photos.large != null) {
-                    $(".cao-imagem", card).attr("src", result.photos.large); //Caso a tenho imagem expomos a imagem recebida 
-                }                                                                     
-                else if(result.primary_photo_cropped != null) {//Se nao expomos uma imagem default
-                    $(".cao-imagem", card).attr("src", result.primary_photo_cropped.large);
-                }
-                else{
-                    $(".cao-imagem", card).attr("src", "images/dog_1.jpg");
-                }
-    
-    
-                $(".lista-caes").append(card); //adicionamos o card novo para o fim da row
-    
-
-                // A PARTIR DAQUI E PARA GUARDAR OS DADOS NO LOCAL STORAGE PARA DEPOIS QUANDO CLICAR NO DETALHES DO CAO
-                // SO APARECER UM CARD ONDE REPOMOS A INFORMACAO COM A QUE O USER CLICOU
-                //aka QUAND CLICA SALVA OS DADOS NUM OBJETO E DEPOIS LEVAMOS ESSE DADOS PARA O CARD ISOLADO NA PAG DOS DETALHES
-    
-    
-                var objFav = {
-                    "Nome": result.name,
-                    "Raca": result.primary,
-                    "Descricao": result.description,
-                    "Genero": result.gender,
-                    "Imagem":result.photos.large
-                };
-    
-                var favoritos = JSON.stringify(objFav);
-                $(".btn-favoritos", card).attr("onclick", "addFavorito(" + favoritos + ")");
-    
-    
-            });
-        });
-    }
-
+   
 });
 
+function proximaPagina(){
+    current_page++;
+    console.log(current_page);
+    atualizarCardsComToken(current_page);
+}
+
+function atualizarCardsComToken(current_page) {
+
+   
+    console.log(current_page);
+    
+    // Fazendo uma solicitação AJAX para obter informações sobre animais (cães)
+    $.ajax({
+        
+        method: 'GET',
+        url:  `https://api.petfinder.com/v2/animals?type=dog&page=${current_page}`,
+        headers: {"Authorization": "Bearer " + token}
+    
+    }).done(function (dados_recebidos) {
+        
+        $(".lista-caes").html(""); //limpar o clone com info default
+
+        $.each(dados_recebidos.animals, function (indice, result) {
+            console.log(result);
+        
+            //console.log(result); verificar dados recebidos
+
+            var card = clone_card_cao.clone(); // replicamos um card novo para nao sobrepor informaçoes e perder o original
+
+            $(".cao-nome", card).text(result.name); //adicionamos a informaçao que obtivemos e substituimos no card novo
+
+            $(".cao-descricao", card).text(result.description);
+
+            $(".cao-race", card).text(result.breeds.primary);
+
+            $(".cao-genero", card).text(result.gender);
+
+            if (result.photos.large != null) {
+                $(".cao-imagem", card).attr("src", result.photos.large); //Caso a tenho imagem expomos a imagem recebida 
+            }                                                                     
+            else if(result.primary_photo_cropped != null) {//Se nao expomos uma imagem default
+                $(".cao-imagem", card).attr("src", result.primary_photo_cropped.large);
+            }
+            else{
+                $(".cao-imagem", card).attr("src", "images/dog_1.jpg");
+            }
+
+
+            $(".lista-caes").append(card); //adicionamos o card novo para o fim da row
+
+
+            // A PARTIR DAQUI E PARA GUARDAR OS DADOS NO LOCAL STORAGE PARA DEPOIS QUANDO CLICAR NO DETALHES DO CAO
+            // SO APARECER UM CARD ONDE REPOMOS A INFORMACAO COM A QUE O USER CLICOU
+            //aka QUAND CLICA SALVA OS DADOS NUM OBJETO E DEPOIS LEVAMOS ESSE DADOS PARA O CARD ISOLADO NA PAG DOS DETALHES
+
+
+            var objFav = {
+                "Nome": result.name,
+                "Raca": result.primary,
+                "Descricao": result.description,
+                "Genero": result.gender,
+                "Imagem":result.photos.large
+            };
+
+            var favoritos = JSON.stringify(objFav);
+            $(".btn-favoritos", card).attr("onclick", "addFavorito(" + favoritos + ")");
+
+
+        });
+    });
+}
+
+function verDetalhes(id){
+    localStorage.setItem("id", id);
+    location.href="about_dog.html";
+}
 
 
 
