@@ -1,13 +1,36 @@
-
 var current_page = 1;
+var token;
+
 document.addEventListener('DOMContentLoaded', function () {
+    var clone_card_cao = $(".card-cao").clone(); //clonar o card
+    $(".lista-caes").html(""); //limpar o clone com info default
+    
+
+    //mudança de pagina
+    $("#proxima_pagina").on("click", function() {
+        current_page++;
+        atualizarCardsComToken(current_page);
+    });
+
+    // Evento para página anterior
+    $("#pagina_anterior").on("click", function() {
+    if (current_page > 1) {
+        current_page--;
+        atualizarCardsComToken(current_page);
+    }
+    });
+
 
     obterToken()
-    .then(atualizarCardsComToken)
+    .then(function (receivedToken) {
+        token = receivedToken; // Atribui o token à variável global
+        atualizarCardsComToken(current_page);
+    })
     .catch(error => {
         // Lidar com erros na obtenção do token ou na atualização dos cards
         console.error('Erro ao obter o token ou atualizar os cards:', error);
     });
+
 
     function obterToken() {
 
@@ -21,9 +44,7 @@ document.addEventListener('DOMContentLoaded', function () {
         // Configurando as opções da solicitação Fetch
         const requestOptions = {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded',
-            },
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'},
             body: new URLSearchParams(requestData)
         };
     
@@ -38,19 +59,23 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
 
-    function atualizarCardsComToken(token) {
-        var clone_card_cao = $(".card-cao").clone(); //clonar o card
-        $(".lista-caes").html(""); //limpar o clone com info default
+    function atualizarCardsComToken(current_page) {
         
-    
+        console.log(current_page);
+        
         // Fazendo uma solicitação AJAX para obter informações sobre animais (cães)
         $.ajax({
-        
+            
             method: 'GET',
-            url: 'https://api.petfinder.com/v2/animals?type=dog&page=' + current_page,
+            url:  `https://api.petfinder.com/v2/animals?type=dog&page=${current_page}`,
             headers: {"Authorization": "Bearer " + token}
         
         }).done(function (dados_recebidos) {
+
+            console.log('https://api.petfinder.com/v2/animals?type=dog&page=' + current_page);
+            
+            
+            
             $.each(dados_recebidos.animals, function (indice, result) {
             
                 //console.log(result); verificar dados recebidos
@@ -67,8 +92,8 @@ document.addEventListener('DOMContentLoaded', function () {
     
                 if (result.photos.large != null) {
                     $(".cao-imagem", card).attr("src", result.photos.large); //Caso a tenho imagem expomos a imagem recebida 
-                }                                                                     //Se nao expomos uma imagem default
-                else if(result.primary_photo_cropped != null) {
+                }                                                                     
+                else if(result.primary_photo_cropped != null) {//Se nao expomos uma imagem default
                     $(".cao-imagem", card).attr("src", result.primary_photo_cropped.large);
                 }
                 else{
@@ -78,23 +103,7 @@ document.addEventListener('DOMContentLoaded', function () {
     
                 $(".lista-caes").append(card); //adicionamos o card novo para o fim da row
     
-                //mudança de pagina
-                $("#proxima_pagina").on("click", function() {
-                    current_page++;
-                    $("#pagina_atual").text(current_page);
-                    loadData(current_page);
-                });
-            
-                // Evento para página anterior
-                $("#pagina_anterior").on("click", function() {
-                    if (current_page > 1) {
-                        current_page--;
-                        $("#pagina_atual").text(current_page);
-                        loadData(current_page);
-                    }
-                });
-    
-    
+
                 // A PARTIR DAQUI E PARA GUARDAR OS DADOS NO LOCAL STORAGE PARA DEPOIS QUANDO CLICAR NO DETALHES DO CAO
                 // SO APARECER UM CARD ONDE REPOMOS A INFORMACAO COM A QUE O USER CLICOU
                 //aka QUAND CLICA SALVA OS DADOS NUM OBJETO E DEPOIS LEVAMOS ESSE DADOS PARA O CARD ISOLADO NA PAG DOS DETALHES
