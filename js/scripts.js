@@ -2,95 +2,87 @@ var current_page = 1;
 var token;
 var clone_card_cao;
 
-if(location.pathname.split("/").pop() == "about_dog.html" && localStorage.getItem("id") !== null){
-    console.log("Página dos detalhes");
-   detalhesCao();
-}
-
-function detalhesCao(){
-    var id=localStorage.getItem("id");
-    console.log(id);
-
-    $.ajax({
-        
-        method: 'GET',
-        url:  `https://api.petfinder.com/v2/animals/${id}`,
-        headers: {"Authorization": "Bearer " + token}
-    
-    }).done(function (dados_recebidos) {
-        console.log(dados_recebidos);
-        
-
-    });
-}
-
-document.addEventListener('DOMContentLoaded', function () { 
+document.addEventListener('DOMContentLoaded', function () {
     clone_card_cao = $(".card-cao").clone(); //clonar o card
     $(".lista-caes").html(""); //limpar o clone com info default
-
-
-    // Evento para página anterior
-    $("#pagina_anterior").on("click", function() {
-    if (current_page > 1) {
-        current_page--;
-        atualizarCardsComToken(current_page);
-
-    }
-    });
-
 
     obterToken()
     .then(function (receivedToken) {
         token = receivedToken; // Atribui o token à variável global
-        atualizarCardsComToken(current_page);
-        detalhesCao();
+        if(location.pathname.split("/").pop() == "dogs_to_adoption.html"){
+            localStorage.removeItem("key_id");
+            atualizarCardsComToken(current_page);
+        }
+        if(location.pathname.split("/").pop() == "about_dog.html" && localStorage.getItem("key_id") !== null){
+            ver_detalhes_cao();
+        }
     })
     .catch(error => {
         // Lidar com erros na obtenção do token ou na atualização dos cards
         console.error('Erro ao obter o token ou atualizar os cards:', error);
     });
-
-
-    function obterToken() {
-
-        // Configurando os dados para a solicitação
-        const requestData = {
-            grant_type: 'client_credentials',
-            client_id: "IWbfaErC1hu1jUBriWKk2NyHOL0BlpOSAoXjkeoSPdoxT39bdt",
-            client_secret: "qKjK2DtpDnjey7lAhQJ2iLEaMHaVQcHIPSTwBOzz"
-        };
-    
-        // Configurando as opções da solicitação Fetch
-        const requestOptions = {
-            method: 'POST',
-            headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-            body: new URLSearchParams(requestData)
-        };
-    
-        // Fazendo a solicitação para obter o token
-        return fetch("https://api.petfinder.com/v2/oauth2/token", requestOptions)
-            .then(response => response.json())
-            .then(data => data.access_token)
-            .catch(error => {
-                console.error('Erro ao obter o token:', error);
-                throw error; // Rejeitar a Promise para sinalizar falha na obtenção do token
-            });
-    }
-
-
    
 });
 
-function proximaPagina(){
-    current_page++;
-    console.log(current_page);
-    atualizarCardsComToken(current_page);
+function ir_detalhes_cao(id_cao){
+    localStorage.setItem("key_id",id_cao);
+    location.href="about_dog.html";
 }
 
-function atualizarCardsComToken(current_page) {
 
-   
-    console.log(current_page);
+function ver_detalhes_cao(){
+    
+    var id_cao = localStorage.getItem("key_id");
+    
+    console.log(id_cao);
+
+    $.ajax({
+        
+        method: 'GET',
+        url:  `https://api.petfinder.com/v2/animals/${id_cao}`,
+        headers: {"Authorization": "Bearer " + token}
+    
+    }).done(function (dados_recebidos) {
+        console.log(dados_recebidos);
+
+
+
+
+
+
+
+        
+    });
+}
+
+function obterToken() {
+
+    // Configurando os dados para a solicitação
+    const requestData = {
+        grant_type: 'client_credentials',
+        client_id: "IWbfaErC1hu1jUBriWKk2NyHOL0BlpOSAoXjkeoSPdoxT39bdt",
+        client_secret: "qKjK2DtpDnjey7lAhQJ2iLEaMHaVQcHIPSTwBOzz"
+    };
+
+    // Configurando as opções da solicitação Fetch
+    const requestOptions = {
+        method: 'POST',
+        headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+        body: new URLSearchParams(requestData)
+    };
+
+    // Fazendo a solicitação para obter o token
+    return fetch("https://api.petfinder.com/v2/oauth2/token", requestOptions)
+        .then(response => response.json())
+        .then(data => data.access_token)
+        .catch(error => {
+            console.error('Erro ao obter o token:', error);
+            throw error; // Rejeitar a Promise para sinalizar falha na obtenção do token
+        });
+}
+
+
+function atualizarCardsComToken(current_page) {
     
     // Fazendo uma solicitação AJAX para obter informações sobre animais (cães)
     $.ajax({
@@ -104,9 +96,8 @@ function atualizarCardsComToken(current_page) {
         $(".lista-caes").html(""); //limpar o clone com info default
 
         $.each(dados_recebidos.animals, function (indice, result) {
-            console.log(result);
         
-            //console.log(result); verificar dados recebidos
+            console.log(result);
 
             var card = clone_card_cao.clone(); // replicamos um card novo para nao sobrepor informaçoes e perder o original
 
@@ -117,6 +108,8 @@ function atualizarCardsComToken(current_page) {
             $(".cao-race", card).text(result.breeds.primary);
 
             $(".cao-genero", card).text(result.gender);
+
+            $(".adicionar_cao_id", card).attr("onclick", `ir_detalhes_cao(${result.id})`);
 
             if (result.photos.large != null) {
                 $(".cao-imagem", card).attr("src", result.photos.large); //Caso a tenho imagem expomos a imagem recebida 
@@ -153,9 +146,14 @@ function atualizarCardsComToken(current_page) {
     });
 }
 
-function verDetalhes(id){
-    localStorage.setItem("id", id);
-    location.href="about_dog.html";
+function anteriorPagina(){
+    current_page--;
+    atualizarCardsComToken(current_page);
+}
+
+function proximaPagina(){
+    current_page++;
+    atualizarCardsComToken(current_page);
 }
 
 
