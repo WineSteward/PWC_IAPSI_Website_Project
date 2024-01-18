@@ -3,7 +3,6 @@
 @media (min-width:0px) and (max-width: 575.98px) {
 
   
-  
   #img_collapse_adoption {
     display: none;
   }
@@ -14,7 +13,11 @@
   #img_collapse_adoption {
     display: none;
   }
-
+ 
+  .spinner-border{
+    width: 60px;
+    height: 60px;
+  }
 }
 
 @media (min-width: 768px) and (max-width: 991.98px) {
@@ -22,7 +25,11 @@
   #img_collapse_adoption {
     display: none;
   }
-
+ 
+  .spinner-border{
+    width: 60px;
+    height: 60px;
+  }
 }
 
 @media (min-width: 992px) and (max-width: 1199.98px) {
@@ -31,11 +38,20 @@
     display: block;
   }
 
+  .spinner-border{
+    width: 60px;
+    height: 60px;
+  }
 }
 
 @media (min-width: 1200px) and (max-width: 1399.98px) {
   #img_collapse_adoption {
     display: block;
+  }
+ 
+  .spinner-border{
+    width: 60px;
+    height: 60px;
   }
 }
 
@@ -44,15 +60,49 @@
   #img_collapse_adoption {
     display: block;
   }
+
+  .spinner-border{
+    width: 60px;
+    height: 60px;
+  }
+}
+
+/*Topbar navbar CSS*/
+
+.navbar{
+  z-index: 9999;
 }
 
 .navbar-nav a:hover, footer a:hover{
   color: #00ADB5 !important;
 }
 
+/*Spinner CSS*/
 
-body{
-  background-color: #EEEEEE;
+.spinner-wrapper{
+  background-color: #eee;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.5s;
+}
+
+
+
+/* Butao Favoritos CSS */
+.badge-container {
+  max-width: 90px;
+  margin: auto;
+}
+
+.img-download {
+  max-width: 100%;
 }
 
 
