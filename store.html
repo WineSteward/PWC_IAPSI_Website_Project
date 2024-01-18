@@ -1,162 +1,201 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="styles/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="styles/styles.css">
-    <title>Loja</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="styles/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="styles/styles.css">
+  <title>Loja</title>
 </head>
+
 <body>
-    <nav class="navbar navbar-expand-sm bg-body-tertiary">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="index.html">Adotar</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav">
-              <a class="nav-link active" aria-current="page" href="index.html">Home</a>
-              <a class="nav-link" href="about.html">Sobre Nós</a>
-              <a class="nav-link" href="store.html">Loja</a>
-              <a class="nav-link" href="favorites.html">Favoritos</a>
-              <a class="nav-link" href="contacts.html">Contactos</a>
-              <a class="nav-link" href="adoption.html">Adotar</a>
-            </div>
-          </div>
+  <nav class="navbar navbar-expand-sm bg-body-tertiary">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="index.html">Adotar</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+        aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+          <a class="nav-link" href="about.html">Sobre Nós</a>
+          <a class="nav-link" href="store.html">Loja</a>
+          <a class="nav-link" href="favorites.html">Favoritos</a>
+          <a class="nav-link" href="contacts.html">Contactos</a>
+          <a class="nav-link" href="adoption.html">Adotar</a>
         </div>
-    </nav>
+      </div>
+    </div>
+  </nav>
 
- 
-      <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-body-tertiary">
-        <div class="col-md-6 p-lg-5 mx-auto my-5">
-          <h1 class="display-3 fw-bold">Loja</h1>
-          <h3 class="fw-normal text-muted mb-3">Aqui pode encotrar comida e brinquedos para o seu animal ganhar energia e brincar!</h3>
-          <div class="d-flex gap-3 justify-content-center lead fw-normal">
+
+  <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-body-tertiary">
+    <div class="col-md-6 p-lg-5 mx-auto my-5">
+      <h1 class="display-3 fw-bold">Loja</h1>
+      <h3 class="fw-normal text-muted mb-3">Aqui pode encotrar comida e brinquedos para o seu animal ganhar energia e
+        brincar!</h3>
+      <div class="d-flex gap-3 justify-content-center lead fw-normal">
+      </div>
+    </div>
+  </div>
+
+  <div class="row" style="max-width: 1600px; margin-left: auto; margin-right: auto;">
+    <div class="d-md-flex flex-md-equal w-100 my-md-3 ps-md-3">
+      <div class="bg-body-tertiary me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
+        <div class="my-3 p-3">
+          <h2 class="display-5">Peluche Patinho</h2>
+          <p class="lead">Fofinho, colorido e resistente</p>
+        </div>
+        <div class="card mx-auto mb-5" style="width: 18rem;">
+          <img src="images/dog_toy1.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <label for="form_control_quantity" class="form-label">Preço: 25€/uni</label>
+            <hr>
+            <label for="form_control_quantity" class="form-label">Quantidade:</label>
+            <input type="number" min="1" class="form-control" id="quantidade_peluche">
+            <button type="button" onclick="popup_info('Peluche Patinho', 'quantidade_peluche', '25')" class="btn btn-primary m-2" data-bs-toggle="modal"
+              data-bs-target="#exampleModal">Comprar</button>
           </div>
         </div>
       </div>
 
-    <div class="row" style="max-width: 1600px; margin-left: auto; margin-right: auto;">
-      <div class="d-md-flex flex-md-equal w-100 my-md-3 ps-md-3">
-        <div class="bg-body-tertiary me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
-          <div class="my-3 p-3">
-            <h2 class="display-5">Brinquedo Animal</h2>
-            <p class="lead">Detalhes do brinquedo</p>
-          </div>
-          <div class="card mx-auto" style="width: 18rem;">
-            <img src="images/dog_toy1.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-             <hr>
-             <label for="form_control_quantity" class="form-label">Quantidade:</label>
-             <input type="number" min="1" class="form-control">
-             <button href="#" class="btn btn-primary m-2">Buy</button>
-            </div>
-          </div>
+      <div class="text-bg-dark me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
+        <div class="my-3 py-3">
+          <h2 class="display-5">Biscoitos para cão</h2>
+          <p class="lead">Crocantes e delíciosas ideal como reconpensa para os nossos amiguinhos!</p>
         </div>
-
-        <div class="text-bg-dark me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
-          <div class="my-3 py-3">
-            <h2 class="display-5">Biscoitos para cão</h2>
-            <p class="lead">Crocantes e delíciosas ideal como reconpensa para os nossos amiguinhos!</p>
-          </div>
-          <div class="card mx-auto" style="width: 18rem;">
-            <img src="images/dog_food1.jpeg" class="card-img-top" alt="...">
-            <div class="card-body">
-             <hr>
-             <label for="form_control_quantity" class="form-label">Quantidade:</label>
-             <input type="number" min="1" class="form-control">
-             <button class="btn btn-primary m-2">Buy</button>
-            </div>
-          </div>
-        </div>
-      </div>
-      
-      <div class="d-md-flex flex-md-equal w-100 my-md-3 ps-md-3">
-        <div class="bg-body-tertiary me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
-          <div class="my-3 p-3">
-            <h2 class="display-5">Brinquedo Animal</h2>
-            <p class="lead">Detalhes do brinquedo</p>
-          </div>
-          <div class="card mx-auto" style="width: 18rem;">
-            <img src="images/dog_toy2.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-             <hr>
-             <label for="form_control_quantity" class="form-label">Quantidade:</label>
-             <input type="number" min="1" class="form-control">
-             <a href="#" class="btn btn-primary m-2">Buy</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="text-bg-dark me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
-          <div class="my-3 py-3">
-            <h2 class="display-5">Brinquedo Animal</h2>
-            <p class="lead">Detalhes do brinquedo</p>
-          </div>
-          <div class="card mx-auto" style="width: 18rem;">
-            <img src="images/dog_toy1.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-             <hr>
-             <label for="form_control_quantity" class="form-label">Quantidade:</label>
-             <input type="number" min="1" class="form-control">
-             <a href="#" class="btn btn-primary m-2">Buy</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="d-md-flex flex-md-equal w-100 my-md-3 ps-md-3">
-        <div class="bg-body-tertiary me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
-          <div class="my-3 p-3">
-            <h2 class="display-5">Brinquedo Animal</h2>
-            <p class="lead">Detalhes do brinquedo</p>
-          </div>
-          <div class="card mx-auto" style="width: 18rem;">
-            <img src="images/dog_toy1.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-             <hr>
-             <label for="form_control_quantity" class="form-label">Quantidade:</label>
-             <input type="number" min="1" class="form-control">
-             <a href="#" class="btn btn-primary m-2">Buy</a>
-            </div>
-          </div>
-        </div>
-        <div class="text-bg-dark me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
-          <div class="my-3 py-3">
-            <h2 class="display-5">Brinquedo Animal</h2>
-            <p class="lead">Detalhes do brinquedo</p>
-          </div>
-          <div class="card mx-auto" style="width: 18rem;">
-            <img src="images/dog_toy2.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-             <hr>
-             <label for="form_control_quantity" class="form-label">Quantidade:</label>
-             <input type="number" min="1" class="form-control">
-             <a href="#" class="btn btn-primary m-2">Buy</a>
-            </div>
+        <div class="card mx-auto mb-5" style="width: 18rem;">
+          <img src="images/dog_food1.jpeg" style="max-height: 300px;" class="card-img-top" alt="">
+          <div class="card-body">
+            <label for="form_control_quantity" class="form-label">Preço: 10€/pck</label>
+            <hr>
+            <label for="form_control_quantity" class="form-label">Quantidade:</label>
+            <input type="number" min="1" class="form-control" id="quantidade_biscoitos">
+            <button type="button" onclick="popup_info('Biscoitos para cão', 'quantidade_biscoitos', '10')" class="btn btn-primary m-2" data-bs-toggle="modal"
+              data-bs-target="#exampleModal">Comprar</button>
           </div>
         </div>
       </div>
     </div>
 
+    <div class="d-md-flex flex-md-equal w-100 my-md-3 ps-md-3">
+      <div class="bg-body-tertiary me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
+        <div class="my-3 p-3">
+          <h2 class="display-5">Brinquedo de cordas enroladas</h2>
+          <p class="lead">Resistente, duradouro e seguro para brincar</p>
+        </div>
+        <div class="card mx-auto mb-5" style="width: 18rem;">
+          <img src="images/dog_toy2.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <label for="form_control_quantity" class="form-label">Preço: 8€/uni</label>
+            <hr>
+            <label for="form_control_quantity" class="form-label">Quantidade:</label>
+            <input type="number" min="1" class="form-control" id="quantidade_cordas">
+            <button type="button" onclick="popup_info('Brinquedo de cordas enroladas', 'quantidade_cordas', '8')" class="btn btn-primary m-2" data-bs-toggle="modal"
+              data-bs-target="#exampleModal">Comprar</button>
+          </div>
+        </div>
+      </div>
 
-
-
-    <div class="container-fluid" id="footer_container">
-      <footer class="py-3 my-4">
-        <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-          <li class="nav-item"><a href="index.html" class="nav-link px-2 text-body-secondary">Home</a></li>
-          <li class="nav-item"><a href="about.html" class="nav-link px-2 text-body-secondary">Sobre Nós</a></li>
-          <li class="nav-item"><a href="favorites.html" class="nav-link px-2 text-body-secondary">Favoritos</a></li>
-          <li class="nav-item"><a href="contacts.html" class="nav-link px-2 text-body-secondary">Contactos</a></li>
-          <li class="nav-item"><a href="adoption.html" class="nav-link px-2 text-body-secondary">Adotar</a></li>
-        </ul>
-        <p class="text-center text-body-secondary">Adota 2023 Company, Inc</p>
-      </footer>
+      <div class="text-bg-dark me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
+        <div class="my-3 py-3">
+          <h2 class="display-5">Osso de roer</h2>
+          <p class="lead">Estimula os músculos bocais do animal</p>
+        </div>
+        <div class="card mx-auto mb-5" style="width: 18rem;">
+          <img src="images/comida_cao_1.jpg" style="max-height: 300px;" class="card-img-top" alt="...">
+          <div class="card-body">
+            <label for="form_control_quantity" class="form-label">Preço: 2€/uni</label>
+            <hr>
+            <label for="form_control_quantity" class="form-label">Quantidade:</label>
+            <input type="number" min="1" class="form-control" id="quantidade_osso">
+            <button type="button" onclick="popup_info('Osso de roer', 'quantidade_osso', '2')" class="btn btn-primary m-2" data-bs-toggle="modal"
+              data-bs-target="#exampleModal">Comprar</button>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <script src="js/bootstrap.min.js" type="text/javascript"></script>
-    <script src="js/scripts.js" type="text/javascript"></script>
+    <div class="d-md-flex flex-md-equal w-100 my-md-3 ps-md-3">
+      <div class="bg-body-tertiary me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
+        <div class="my-3 p-3">
+          <h2 class="display-5">Kit Animal - Special Edition</h2>
+          <p class="lead">Composto por uma tijela, trela e corta-unhas para cão</p>
+        </div>
+        <div class="card mx-auto mb-5" style="width: 18rem;">
+          <img src="images/tijela_cao.jpg" style="max-height: 300px;" class="card-img-top" alt="...">
+          <div class="card-body">
+            <label for="form_control_quantity" class="form-label">Preço: 15€/kit</label>
+            <hr>
+            <label for="form_control_quantity" class="form-label">Quantidade:</label>
+            <input type="number" min="1" class="form-control" id="quantidade_kit">
+            <button type="button" onclick="popup_info('Kit Animal - Special Edition', 'quantidade_kit', '15')" class="btn btn-primary m-2" data-bs-toggle="modal"
+              data-bs-target="#exampleModal">Comprar</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-bg-dark me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
+        <div class="my-3 py-3">
+          <h2 class="display-5" id="nome_comida_20kg">Comida para cão 20kg</h2>
+          <p class="lead">Nutritivo e equilibrado ideal para animais ativos</p>
+        </div>
+        <div class="card mx-auto mb-5" style="width: 18rem;">
+          <img src="images/comida_cao_2.png" style="max-height: 300px;" class="card-img-top" alt="...">
+          <div class="card-body">
+            <label for="form_control_quantity" class="form-label">Preço: 20€/uni</label>
+            <hr>
+            <label for="form_control_quantity" class="form-label">Quantidade:</label>
+            <input type="number" min="1" class="form-control" id="quantidade_comida_20kg">
+            <button type="button" onclick="popup_info('Comida para cão 20kg', 'quantidade_comida_20kg', '20')" class="btn btn-primary m-2" data-bs-toggle="modal" data-bs-target="#exampleModal">Comprar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="">A sua compra foi efetuada com sucesso.</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>O que comprou: <span id="nome_produto_popup">XXX</span></p>
+          <p>Quantidade comprada: <span id="quantidade_produto_popup">YYY</span></p>
+          <p>Preço final da compra: <span id="preco_final">ZZZ</span>€</p>
+        </div>
+        <div class="modal-footer justify-content-center">
+          <button type="button" onclick="reset_page_store()" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="container-fluid" id="footer_container">
+    <footer class="py-3 my-4">
+      <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+        <li class="nav-item"><a href="index.html" class="nav-link px-2 text-body-secondary">Home</a></li>
+        <li class="nav-item"><a href="about.html" class="nav-link px-2 text-body-secondary">Sobre Nós</a></li>
+        <li class="nav-item"><a href="favorites.html" class="nav-link px-2 text-body-secondary">Favoritos</a></li>
+        <li class="nav-item"><a href="contacts.html" class="nav-link px-2 text-body-secondary">Contactos</a></li>
+        <li class="nav-item"><a href="adoption.html" class="nav-link px-2 text-body-secondary">Adotar</a></li>
+      </ul>
+      <p class="text-center text-body-secondary">Adota 2023 Company, Inc</p>
+    </footer>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+    integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="js/bootstrap.min.js" type="text/javascript"></script>
+  <script src="js/scripts.js" type="text/javascript"></script>
 </body>
+
 </html>

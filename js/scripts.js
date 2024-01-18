@@ -3,6 +3,32 @@ var token;
 var clone_card_cao;
 const element_spinner_wrapper = document.querySelector(".spinner-wrapper");
 
+function popup_info(nome, id_quantidade, preco) {
+
+    var quantidade_produto = document.getElementById(id_quantidade).value;
+
+    var preco_numero = parseFloat(preco);
+    var quantidade_numero = parseFloat(quantidade_produto);
+    var total = preco_numero * quantidade_numero;
+    var total_string = String(total);
+
+        if (quantidade_produto > "0" || quantidade_produto !== "") {
+            $('#myModal').modal('show');
+            $("#nome_produto_popup").text(nome);
+            $("#quantidade_produto_popup").text(quantidade_produto);
+            $("#preco_final").text(total_string);
+        }
+        else {
+            alert("Não foi escolhida nenhuma quantidade");
+            $('#myModal').modal('hide');
+        }
+
+
+}
+
+function reset_page_store(){
+    location.reload();
+}
 
 document.addEventListener('DOMContentLoaded', function () {
     clone_card_cao = $(".card-cao").clone(); //clonar o card
@@ -11,12 +37,12 @@ document.addEventListener('DOMContentLoaded', function () {
     obterToken()
         .then(function (receivedToken) {
             token = receivedToken; // Atribui o token à variável global
-            
+
             if (location.pathname.split("/").pop() == "dogs_to_adoption.html") {
                 localStorage.removeItem("key_id");
                 atualizarCardsComToken(current_page);
             }
-            
+
             if (location.pathname.split("/").pop() == "about_dog.html" && localStorage.getItem("key_id") !== null) {
                 ver_detalhes_cao();
             }
@@ -41,7 +67,7 @@ function ver_detalhes_cao() {
     var id_cao = localStorage.getItem("key_id");
 
     console.log(id_cao);
-    
+
     $.ajax({
 
         method: 'GET',
@@ -50,7 +76,7 @@ function ver_detalhes_cao() {
 
     }).done(function (dados_recebidos) {
 
-        element_spinner_wrapper.style.display = "none"; 
+        element_spinner_wrapper.style.display = "none";
         //console.log(dados_recebidos);
 
         $("#nome_cao_detalhes").text(dados_recebidos.animal.name);
@@ -111,11 +137,11 @@ function atualizarCardsComToken(current_page) {
         headers: { "Authorization": "Bearer " + token }
 
     }).done(function (dados_recebidos) {
-        
+
         $(".lista-caes").html(""); //limpar o clone com info default
 
         element_spinner_wrapper.style.display = "none";
-        
+
         $.each(dados_recebidos.animals, function (indice, result) {
 
             console.log(result);
