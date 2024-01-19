@@ -1,10 +1,16 @@
 /*  Definiçoes Gerais */
 
 @media (min-width:0px) and (max-width: 575.98px) {
-
-  
   #img_collapse_adoption {
     display: none;
+  }
+  
+  .tabela_espacada{
+    display: none;
+  }
+
+  .tabela_compactada{
+    display: block;
   }
 }
 
@@ -18,6 +24,14 @@
     width: 60px;
     height: 60px;
   }
+
+  .tabela_espacada{
+    display: none;
+  }
+
+  .tabela_compactada{
+    display: block;
+  }
 }
 
 @media (min-width: 768px) and (max-width: 991.98px) {
@@ -29,6 +43,14 @@
   .spinner-border{
     width: 60px;
     height: 60px;
+  }
+
+  .tabela_espacada{
+    display: none;
+  }
+
+  .tabela_compactada{
+    display: block;
   }
 }
 
@@ -42,6 +64,14 @@
     width: 60px;
     height: 60px;
   }
+
+  .tabela_espacada{
+    display: none;
+  }
+
+  .tabela_compactada{
+    display: block;
+  }
 }
 
 @media (min-width: 1200px) and (max-width: 1399.98px) {
@@ -52,6 +82,10 @@
   .spinner-border{
     width: 60px;
     height: 60px;
+  }
+
+  .tabela_compactada{
+    display: none;
   }
 }
 
@@ -64,6 +98,10 @@
   .spinner-border{
     width: 60px;
     height: 60px;
+  }
+
+  .tabela_compactada{
+    display: none;
   }
 }
 
@@ -94,7 +132,6 @@
 }
 
 
-
 /* Butao Favoritos CSS */
 .badge-container {
   max-width: 90px;
@@ -105,6 +142,10 @@
   max-width: 100%;
 }
 
+.favorito {
+  background-color: #DAA520 !important; /* O uso de !important garante que esta regra tenha prioridade */
+  color: #000 !important;
+}
 
 /*  Definiçoes do Carroussel*/
 .carousel {
