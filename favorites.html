@@ -30,31 +30,32 @@
     </div>
   </nav>
 
-
   <div class="row">
     <h2 class="mt-5 mb-5 text-center" style="font-size: 2.5rem; font-weight: bold; color: #00ADB5;">Favoritos</h2>
   </div>
 
-  <div class="row" style="max-width: 1100px; margin-left: auto; margin-right: auto;">
+  <div class="row lista_favoritos_espacada" style="max-width: 1100px; margin-left: auto; margin-right: auto;">
     <table class="table-responsive tabela_espacada">
       <thead>
         <tr>
           <th>Nome</th>
           <th>Idade</th>
           <th>Raça</th>
-          <th>Número</th>
-          <th>Porte</th>
-          <th></th>
+          <th>Identificador</th>
+          <th>Género</th>
         </tr>
       </thead>
-      <tbody class="table-group-divider">
-        <tr class="row_tabela_favoritos">
-          <th>Nome</th>
-          <td>Idade</td>
-          <td>RACA</td>
-          <td>IDENTIFICADOR</td>
-          <td>Genero</td>
-          <td><button type="button" class="btn btn-danger btn-sm">Remover</button></td>
+      <tbody class="table-group-divider row_tabela_favoritos">
+        <tr>
+          <td class="cao_nome">Nome</td>
+          <td class="cao_idade">Idade</td>
+          <td class="cao_raca">RACA</td>
+          <td class="cao_id">IDENTIFICADOR</td>
+          <td class="cao_genero">Genero</td>
+          <td>
+            <button type="button" onclick="" class="btn btn-danger btn-sm remover_favorito">Remover</button>
+            <button type="button" class="btn btn-primary btn-sm detalhes_cao">Detalhes do Cão</button>
+          </td>
         </tr>
       </tbody>
     </table>
@@ -70,18 +71,21 @@
 
 
 
-
-  <div class="row tabela_compactada ms-3 me-1">
+<div class="row coisa_chata">
+  <div class="tabela_compactada m-3">
     <div class="text-center" style="border: 2px solid #00ADB5; border-radius: 5px; max-width: 560px; margin-left: auto; margin-right: auto;">
-      <p style="font-weight: bold;" class="mt-2">Nome: <span style="font-weight: lighter;">MALAQUIAS</span></p>
-      <p style="font-weight: bold;">Idade: <span style="font-weight: lighter;">vELHOTE</span></p>
-      <p style="font-weight: bold;">Raça: <span style="font-weight: lighter;">Arraçadao</span></p>
-      <p style="font-weight: bold;">Identificador: <span style="font-weight: lighter;">992992</span></p>
-      <p style="font-weight: bold;">Genero: <span style="font-weight: lighter;">Masculinamente lindo</span></p>
-      <td><button type="button" class="btn btn-danger btn-sm mb-2">Remover</button></td>
+      <p style="font-weight: bold;" class="mt-2">Nome: <span class="cao_nome" style="font-weight: lighter;">MALAQUIAS</span></p>
+      <p style="font-weight: bold;">Idade: <span class="cao_idade" style="font-weight: lighter;">vELHOTE</span></p>
+      <p style="font-weight: bold;">Raça: <span class="cao_raca" style="font-weight: lighter;">Arraçadao</span></p>
+      <p style="font-weight: bold;">Identificador: <span class="cao_id" style="font-weight: lighter;">992992</span></p>
+      <p style="font-weight: bold;">Genero: <span class="cao_genero" style="font-weight: lighter;">Masculinamente lindo</span></p>
+      <td>
+        <button type="button" class="btn btn-danger btn-sm mb-2 remover_favorito">Remover</button>
+        <button type="button" class="btn btn-primary btn-sm mb-2 detalhes_cao">Detalhes do Cão</button>
+      </td>
     </div>
   </div>
-
+</div>
 
 
 

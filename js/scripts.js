@@ -8,6 +8,17 @@ document.addEventListener('DOMContentLoaded', function () {
     clone_card_cao = $(".card-cao").clone(); //clonar o card
     $(".lista-caes").html(""); //limpar o clone com info default
 
+    clone_row_tabela_espacada = $(".row_tabela_favoritos").clone(); //clonar o card
+    $(".row_tabela_favoritos").html(""); //limpar o clone com info default
+
+    clone_tabela_compactada = $(".tabela_compactada").clone(); //clonar o card
+    $(".tabela_compactada").html(""); //limpar o clone com info default
+
+    if (location.pathname.split("/").pop() == "favorites.html") {
+        localStorage.removeItem("key_id");
+        ver_favoritos(clone_row_tabela_espacada, clone_tabela_compactada);
+    }
+
     obterToken()
         .then(function (receivedToken) {
             token = receivedToken; // Atribui o token à variável global
@@ -22,11 +33,60 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         })
         .catch(error => {
-            // Lidar com erros na obtenção do token ou na atualização dos cards
-            console.error('Erro ao obter o token ou atualizar os cards:', error);
+            // Lidar com erros
+            console.error('Erro a receber o token', error);
         });
 
 });
+
+
+function ver_favoritos(clone_row_tabela_espacada, clone_tabela_compactada) {
+
+    for(var i = 0; i < localStorage.length; i++) {
+
+        var key = localStorage.key(i);
+
+        var value = localStorage.getItem(key);
+
+        var dados_cao_favorito = JSON.parse(value);
+
+        //console.log(dados_cao_favorito);
+
+        var tabela_espacada = clone_row_tabela_espacada.clone(); // replica nova para nao sobrepor informaçoes e perder o original
+
+        var tabela_compactada = clone_tabela_compactada.clone();
+
+        $(".cao_nome", tabela_espacada).text(dados_cao_favorito.Nome); //adicionamos a informaçao que obtivemos e substituimos no card novo
+        $(".cao_nome", tabela_compactada).text(dados_cao_favorito.Nome);
+
+        $(".cao_raca", tabela_espacada).text(dados_cao_favorito.Raca);
+        $(".cao_raca", tabela_compactada).text(dados_cao_favorito.Raca);
+
+        $(".cao_genero", tabela_espacada).text(dados_cao_favorito.Genero);
+        $(".cao_genero", tabela_compactada).text(dados_cao_favorito.Genero);
+
+        $(".cao_idade", tabela_espacada).text(dados_cao_favorito.Idade);
+        $(".cao_idade", tabela_compactada).text(dados_cao_favorito.Idade);
+
+        $(".cao_id", tabela_espacada).text(dados_cao_favorito.Identificador);
+        $(".cao_id", tabela_compactada).text(dados_cao_favorito.Identificador);
+
+        $(".remover_favorito", tabela_espacada).attr("onclick", `localStorage.removeItem(${dados_cao_favorito.Identificador}); reset_page_store()`);
+        $(".remover_favorito", tabela_compactada).attr("onclick", `localStorage.removeItem(${dados_cao_favorito.Identificador}); reset_page_store()`);
+
+        $(".detalhes_cao", tabela_espacada).attr("onclick", `ir_detalhes_cao(${dados_cao_favorito.Identificador})`);
+        $(".detalhes_cao", tabela_compactada).attr("onclick", `ir_detalhes_cao(${dados_cao_favorito.Identificador})`);
+
+        $(".tabela_espacada").append(tabela_espacada); //adicionamos os dados as duas tabelas
+        $(".coisa_chata").append(tabela_compactada);
+    }
+}
+
+
+
+
+
+
 
 
 function popup_info(nome, id_quantidade, preco) {
@@ -124,9 +184,9 @@ function ver_detalhes_cao() {
             var jafiz = false;
 
             for (var i = 0; i < localStorage.length; i++) {
-                var storedKey = localStorage.key(i);
+                var stored_key = localStorage.key(i);
 
-                if (key == storedKey) {
+                if (key == stored_key) {
                     // Esta nos favoritos entao remover
                     $("#imagem_badge_favorito").attr("src", "images/favorito_off.png");
                     objeto_cao.Estado = "Nao Favorito";
@@ -188,7 +248,7 @@ function atualizarCardsComToken(current_page) {
 
     }).done(function (dados_recebidos) {
 
-        $(".lista-caes").html(""); //limpar o clone com info default
+        $(".lista-caes").html(""); //Necessario para so por 20cards e nao ficam 20 + 20(novos da new page)
 
         element_spinner_wrapper.style.display = "none";
 

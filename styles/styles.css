@@ -5,7 +5,7 @@
     display: none;
   }
   
-  .tabela_espacada{
+  .lista_favoritos_espacada{
     display: none;
   }
 
@@ -25,7 +25,7 @@
     height: 60px;
   }
 
-  .tabela_espacada{
+  .lista_favoritos_espacada{
     display: none;
   }
 
@@ -45,7 +45,7 @@
     height: 60px;
   }
 
-  .tabela_espacada{
+  .lista_favoritos_espacada{
     display: none;
   }
 
@@ -65,7 +65,7 @@
     height: 60px;
   }
 
-  .tabela_espacada{
+  .lista_favoritos_espacada{
     display: none;
   }
 
@@ -104,6 +104,15 @@
     display: none;
   }
 }
+
+
+/*tabela dos favoritos CSS*/
+
+.row_tabela_favoritos td:last-child {
+  margin-left: auto; /* Empurra o último elemento para a direita (fim da linha) */
+}
+
+
 
 /*Topbar navbar CSS*/
 
