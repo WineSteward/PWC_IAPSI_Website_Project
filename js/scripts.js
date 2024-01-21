@@ -8,41 +8,153 @@ document.addEventListener('DOMContentLoaded', function () {
     clone_card_cao = $(".card-cao").clone(); //clonar o card
     $(".lista-caes").html(""); //limpar o clone com info default
 
-    clone_row_tabela_espacada = $(".row_tabela_favoritos").clone(); //clonar o card
+    var clone_row_tabela_espacada = $(".row_tabela_favoritos").clone(); //clonar o card
     $(".row_tabela_favoritos").html(""); //limpar o clone com info default
 
-    clone_tabela_compactada = $(".tabela_compactada").clone(); //clonar o card
+    var clone_tabela_compactada = $(".tabela_compactada").clone(); //clonar o card
     $(".tabela_compactada").html(""); //limpar o clone com info default
+
+    var front_cover_index = $(".front_cover").clone();
+    $(".row_front_cover").html(""); //limpar o clone com info default
+
+    var end_cover_index = $(".end_cover").clone();
+    $(".col_end_cover").html(""); //limpar o clone com info default
+
 
     if (location.pathname.split("/").pop() == "favorites.html") {
         localStorage.removeItem("key_id");
         ver_favoritos(clone_row_tabela_espacada, clone_tabela_compactada);
     }
 
-    obterToken()
-        .then(function (receivedToken) {
-            token = receivedToken; // Atribui o token à variável global
+    if (location.pathname.split("/").pop() == "index.html" || location.pathname.split("/").pop() == "dogs_to_adoption.html" || location.pathname.split("/").pop() == "about_dog.html") {
+        obterToken()
+            .then(function (receivedToken) {
+                token = receivedToken; // Atribui o token à variável global
 
-            if (location.pathname.split("/").pop() == "dogs_to_adoption.html") {
-                localStorage.removeItem("key_id");
-                atualizarCardsComToken(current_page);
-            }
+                if (location.pathname.split("/").pop() == "index.html") {
+                    localStorage.removeItem("key_id");
+                    atualizar_dados_index(front_cover_index, end_cover_index);
+                }
 
-            if (location.pathname.split("/").pop() == "about_dog.html" && localStorage.getItem("key_id") !== null) {
-                ver_detalhes_cao();
-            }
-        })
-        .catch(error => {
-            // Lidar com erros
-            console.error('Erro a receber o token', error);
-        });
+                if (location.pathname.split("/").pop() == "dogs_to_adoption.html") {
+                    localStorage.removeItem("key_id");
+                    atualizarCardsComToken(current_page);
+                }
 
+                if (location.pathname.split("/").pop() == "about_dog.html" && localStorage.getItem("key_id") !== null) {
+                    ver_detalhes_cao();
+                }
+            })
+            .catch(error => {
+                // Lidar com erros
+                console.error('Erro a receber o token, a tentar fazer novo pedido', error);
+                location.reload();
+            });
+    }
 });
+
+
+function atualizar_dados_index(front_cover, end_cover) {
+
+    var contador = 0;
+
+    $.ajax({
+
+        method: 'GET',
+        url: `https://api.petfinder.com/v2/animals?type=dog&limit=6`,
+        headers: { "Authorization": "Bearer " + token }
+
+    }).done(function (dados_recebidos) {
+
+        element_spinner_wrapper.style.display = "none";
+
+        $.each(dados_recebidos.animals, function (indice, result) {
+
+            console.log(result);
+
+            var clone_front_cover = front_cover.clone();
+            var clone_end_cover = end_cover.clone();
+
+            $(".front_cover", front_cover).html(""); //limpar o clone com info default
+            $(".end_cover_todos", end_cover).html(""); //limpar o clone com info default
+
+            if (contador < 3) {
+
+
+                $(".nome_cao", clone_front_cover).text(result.name);
+
+                if (result.tags[0] != null && result.tags[1] != null) {
+                    $(".caracteristicas", clone_front_cover).text(result.tags[0] + ", " + result.tags[1]);
+                }
+                else if (result.tags[0] != null && result.tags[1] == null) {
+                    $(".caracteristicas", clone_front_cover).text(result.tags[0]);
+                }
+                else {
+                    $(".caracteristicas", clone_front_cover).text("Amigo e Brincalhão");
+                }
+
+                if (result.description != null) {
+                    $(".descricao_cao", clone_front_cover).text(result.description);
+                }
+                else {
+                    $(".descricao_cao", clone_front_cover).text("Descrição não disponibilizada.");
+                }
+
+                if (result.photos.large != null) {
+                    $(".cao_imagem", clone_front_cover).attr("src", result.photos.large); //Caso a tenho imagem expomos a imagem recebida 
+                }
+                else if (result.primary_photo_cropped != null) {//Se nao expomos uma imagem default
+                    $(".cao_imagem", clone_front_cover).attr("src", result.primary_photo_cropped.large);
+                }
+                else {
+                    $(".cao_imagem", clone_front_cover).attr("src", "images/dog_2.jpg");
+                }
+
+                $(".butao_detalhes", clone_front_cover).attr("onclick", `ir_detalhes_cao(${result.id})`);
+
+                if (contador === 1) {
+                    $(".col-md-7", clone_front_cover).addClass("order-md-2");
+                }
+
+                $(".row_front_cover").append(clone_front_cover); //adicionamos o card novo para o fim da row*/
+            }
+
+            else{
+
+                $(".nome_cao", clone_end_cover).text(result.name);
+
+                if (result.description != null) {
+                    $(".descricao_cao", clone_end_cover).text(result.description);
+                }
+                else {
+                    $(".descricao_cao", clone_end_cover).text("Descrição não disponibilizada.");
+                }
+
+                if (result.photos.large != null) {
+                    $(".cao_imagem", clone_end_cover).attr("src", result.photos.large); //Caso a tenho imagem expomos a imagem recebida 
+                }
+                else if (result.primary_photo_cropped != null) {//Se nao expomos uma imagem default
+                    $(".cao_imagem", clone_end_cover).attr("src", result.primary_photo_cropped.large);
+                }
+                else {
+                    $(".cao_imagem", clone_end_cover).attr("src", "images/dog_2.jpg");
+                }
+
+                $(".butao_detalhes", clone_end_cover).attr("onclick", `ir_detalhes_cao(${result.id})`);
+
+                $(".col_end_cover").append(clone_end_cover); //adicionamos o card novo para o fim da row*/
+            }
+
+            contador++;
+        });
+    });
+}
+
 
 
 function ver_favoritos(clone_row_tabela_espacada, clone_tabela_compactada) {
 
-    for(var i = 0; i < localStorage.length; i++) {
+    for (var i = 0; i < localStorage.length; i++) {
 
         var key = localStorage.key(i);
 
@@ -239,7 +351,7 @@ function obterToken() {
 
 function atualizarCardsComToken(current_page) {
 
-    // Pedido AJAX a API com token
+    // pedido AJAX a API com token
     $.ajax({
 
         method: 'GET',
