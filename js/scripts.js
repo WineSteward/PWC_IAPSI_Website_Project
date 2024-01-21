@@ -253,8 +253,13 @@ function ver_detalhes_cao() {
 
         $("#nome_cao_detalhes").text(dados_recebidos.animal.name);
 
-        $("#descricao_cao_detalhes").text(dados_recebidos.animal.description);
-
+        if(dados_recebidos.animal.description != null){
+            $("#descricao_cao_detalhes").text(dados_recebidos.animal.description);
+        }
+        else{
+            $("#descricao_cao_detalhes").text("Descrição não disponibilizada");
+        }
+        
         $("#idade_cao_detalhes").text(dados_recebidos.animal.age);
 
         $("#genero_cao_detalhes").text(dados_recebidos.animal.gender);
