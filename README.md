@@ -9,30 +9,46 @@ Welcome to the **Dog Adoption Center** project! This is a simple yet dynamic web
 1. **Home Page**:
    - Welcoming users with an overview of the adoption center.
    - Featured dogs with brief introductions.
+![image](https://github.com/user-attachments/assets/6a80d291-d944-45e1-8fde-fe07627d60aa)
+
+     
 
 2. **About Us**:
    - Information about the adoption center's mission, history, and values.
    - Embedded images to enhance storytelling.
+![image](https://github.com/user-attachments/assets/da05cfd5-ebc1-4878-a509-eea21d5a6001)
 
 3. **Adoption Form**:
    - A simple form where users can apply to adopt a dog.
    - Collects basic details like name, contact information, and preferences.
+![image](https://github.com/user-attachments/assets/28545de3-8aa9-458e-912f-fd5ecc4f8f9e)
 
 4. **Dog Listings**:
    - A paginated list of all dogs available for adoption.
    - Data fetched from the **Petify API**.
    - Includes photos, names, breeds, and brief descriptions of each dog.
+![image](https://github.com/user-attachments/assets/b3f8429a-5112-4104-9f12-ae4dbc2a110b)
 
 5. **Store**:
    - A small shopping section for pet-related items.
    - Simple shopping experience, including item display and selection.
+![image](https://github.com/user-attachments/assets/db3e3e70-c2c0-4e7d-981c-ac0a3ffe11d0)
 
 6. **Contacts**:
    - Contact form for inquiries.
    - Address, phone number, and other contact details displayed.
+![image](https://github.com/user-attachments/assets/213664ed-a48c-4d3f-bab2-701486228b56)
 
 7. **Responsive Design**:
    - Optimized for all screen sizes: mobile, tablet, and desktop.
+
+8. **Favourites
+   - Sessions are created and stored to keep some informtion, the most prevalant
+   is favourite dogs, that the user can go back and revisted without searching
+   for them.
+![image](https://github.com/user-attachments/assets/b0d874be-435f-4db0-a15d-bb18ed8e4bc2)
+
+
 
 ---
 
